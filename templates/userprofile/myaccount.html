@@ -1,0 +1,29 @@
+{% extends "userprofile/base.html" %}
+{% block title %}
+    My Account
+{% endblock title %}
+
+{% block content %}
+    {% if user_form.errors %}
+        <div class="alert alert-danger alert-dismissible" role="alert">
+            <div id="form_errors">
+                {% for key, value in user_form.errors.items %}
+                    <strong>{{ value }}</strong>
+                {% endfor %}
+            </div>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    {% endif %}
+    <div class="py-6 text-center space-y-6">
+        <h1>Account Details</h1>
+        <form class="form-group" style="display: inline-block;width: 500px;" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {% load crispy_forms_tags %}
+            {{ user_form|crispy }}
+            <button type="submit" class="btn btn-success">Save Changes</button>
+            <button type="reset" class="btn btn-success">Reset</button>
+        </form>
+    </div>
+{% endblock content %}

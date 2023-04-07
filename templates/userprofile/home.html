@@ -1,0 +1,92 @@
+{% extends 'userprofile/base.html' %}
+
+{% block title %}
+    Homepage
+{% endblock %}
+
+{% block content %}
+    {% if user.is_authenticated %}
+        <div class="py-6 text-center space-y-6">
+            <h1 style="padding-bottom: 40px">Hello {{ user.username }}, Welcome to GREFINPAYS. World's first <span class="text-teal-500 hover:text-teal-300">sustainable payments service.</span></h1>
+            <div class="inline-block grid grid-cols-2 gap-5">
+                <div style="text-align: center; height: 500px; border: thin solid black; border-radius: 30px">
+                    <h1 style="padding-bottom: 60px; padding-top: 30px">Easy Pay</h1>
+                    <div class="px-5 h-2/6 inline-block grid grid-cols-2 gap-3">
+                        <a href="{% url 'sendMoney' pk=0 %}" class="py-16 text-xl font-bold bg-blue-700 text-white rounded-l-3xl hover:bg-blue-950">
+                            <button>Transfer</button>
+                        </a>
+                        <a href="{% url 'send_notifications' %}" class="py-16 text-xl font-bold bg-blue-300 text-white rounded-r-3xl hover:bg-blue-500">
+                            <button>Demand</button>
+                        </a>
+                    </div>
+                    <br>
+                    <br>
+                    <br>
+                    <i>*Quick transfer or demand money from any user on the platform</i>
+                </div>
+                <div style="text-align: center; height: 500px; border: thin solid black; border-radius: 30px">
+                    <h1 style="padding-bottom: 10px; padding-top: 20px">Transactions</h1>
+                    <div class="grid v-screen place-items-center px-8">
+                        <table class="table-fixed">
+                            <thead>
+                                <tr>
+                                    <th class="bg-blue-900 text-center text-white p-2 rounded-l-3xl">Date</th>
+                                    <th class="bg-blue-900 border text-center text-white p-2">To/From</th>
+                                    <th class="bg-blue-900 border text-center text-white p-2">Type</th>
+                                    <th class="bg-blue-900 border text-center text-white p-2">Amount</th>
+                                    <th class="bg-blue-900 text-center text-white p-2 rounded-r-3xl">Balance</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            {% if  transaction_data|length == 0 %}
+                                <tr>
+                                    <td colspan="5" class="text-center text-gray-400 border px-8 py-2">No transactions found</td>
+                                </tr>
+                            {% else %}
+                                {% for transaction in transaction_data|slice:"0:5" %}
+                                    <tr class="odd:bg-gray-100">
+                                        <td class="border p-2">{{ transaction.date }}</td>
+                                        <td class="border p-2">{{ transaction.to_from }}</td>
+                                        <td class="border p-2">{{ transaction.transaction_type }}</td>
+                                        <td class="border p-2">{{ transaction.amount }}</td>
+                                        <td class="border p-2">{{ transaction.clearing_balance }}</td>
+                                    </tr>
+                                {% endfor %}
+                            {% endif %}
+                            </tbody>
+                        </table>
+                        <br>
+                        <a href="{% url 'transactions' %}" class="bg-transparent hover:bg-blue-500 text-teal-500 hover:text-teal-300 font-semibold py-2 px-4 border border-blue-900 hover:border-transparent rounded">
+                            <button>
+                            Show more..
+                            </button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% else %}
+        <div>
+            <div class="px-6 py-3 text-lg" style="text-align:center;background-color: #A6E166;">
+                <h1>WELCOME TO GREEN FINANCE PAYMENTS SERVICES</h1>
+            </div>
+            <div class="px-6 py-3 text-lg text-white" style="font-family: Quattrocento; text-align:justify;background-color: #253919;">
+                <p>
+                    With our service, easily and securely send and receive payments from anyone, anywhere in the world.
+                    Whether you need to pay a friend back for dinner or send money to family overseas, our platform makes
+                    it simple and hassle-free. In addition to that, you also gain the opportunity to become a 'Climate Warrior'.
+                    We plant a tree <i class="fa fa-tree"></i> on your behalf for every 100 transactions you make using GREFINPAYS.
+                </p>
+                <p>
+                    To get started, simply create an account and start sending and receiving payments within minutes. With our
+                    user-friendly interface and robust security measures, you can trust that your transactions will be safe
+                    and secure. Join our community of users and experience the convenience and ease of peer-to-peer payments
+                    today.
+                    <a href="{% url 'register' %}" style="color: #A6E166;">Sign up now!</a>
+                </p>
+            </div>
+            {% load static %}
+            <img src="{% static 'webapps2023/GREFINPAYS.jpg' %}" alt="My image">
+        </div>
+    {% endif %}
+{% endblock %}

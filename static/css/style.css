@@ -1,0 +1,17 @@
+/*Notificaion button*/
+
+#btn-nav {
+    float: left;
+    font-size: 20px;
+}
+
+.pending {
+    position: absolute;
+    border-radius: 40%;
+    font-size: 18px;
+    width: 40px;
+    height: 60px;
+    display: flow;
+    justify-content: center;
+    margin-top: -10px;
+}

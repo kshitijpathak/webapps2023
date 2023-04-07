@@ -1,0 +1,23 @@
+{% extends 'userprofile/base.html' %}
+
+{% block title %}
+    Contacts
+{% endblock %}
+
+{% block content %}
+    <div class="py-10 text-center space-y-6">
+        <h1>Contact Us</h1>
+        <style>
+            form {
+                display: inline-block;
+            }
+        </style>
+        <p>If you have any questions, feedback or concerns regarding Green Finance Payment Services, please fill out the form below and we will get back to you as soon as possible.</p>
+        <form method="post" class="form-group" style="width:500px";>
+            {% csrf_token %}
+            {% load crispy_forms_tags %}
+            {{ contact_form|crispy }}
+            <button type="submit" class="btn btn-success">Submit</button>
+        </form>
+    </div>
+{% endblock %}

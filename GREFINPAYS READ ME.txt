@@ -1,0 +1,8 @@
+£££££££££££££££  REFRESH WHEN INSTANCE REFRESHED  £££££££££££££££££££££
+
+GREFINPAYS EC2 Public IP address:
+ec2-100-26-155-197.compute-1.amazonaws.com
+
+
+the Public DNS that can be used to connect SSH (Secure Shell) to this instance remotely:
+ssh -i "GREFINPAYS.pem" ubuntu@ec2-100-26-155-197.compute-1.amazonaws.com

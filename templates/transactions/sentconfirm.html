@@ -1,0 +1,41 @@
+{% extends 'userprofile/base.html' %}
+
+{% block title %}
+    Payment Confirmation
+{% endblock %}
+
+{% block content %}
+    <div class="text-center space-y-6">
+        <h1>Payment Confirmation!</h1>
+        <p>Thank you for your payment! Your transaction has been successfully completed.</p>
+        <h2>Transaction Details</h2>
+        <style>
+            table {
+                display: inline-block;
+            }
+        </style>
+        <table class="bg-lime-300" style="text-align: right; outline:10px solid darkgrey;">
+            <tr>
+                <td style="padding:5px; border:2px solid blue;"><strong>Payment ID:</strong></td>
+                <td style="padding:5px; border:2px solid blue;">{{ payment_ID }}</td>
+            </tr>
+            <tr>
+                <td style="padding:5px; border:2px solid blue;"><strong>Date:</strong></td>
+                <td style="padding:5px; border:2px solid blue;">{{ date }}</td>
+            </tr>
+            <tr>
+                <td style="padding:5px; border:2px solid blue;"><strong>Amount:</strong></td>
+                <td style="padding:5px; border:2px solid blue;">{{ transfer_amount }} {{ src_bal.currency }}</td>
+            </tr>
+            <tr>
+                <td style="padding:5px; border:2px solid blue;"><strong>Sender:</strong></td>
+                <td style="padding:5px; border:2px solid blue;">{{ src_bal.name }}</td>
+            </tr>
+            <tr>
+                <td style="padding:5px; border:2px solid blue;"><strong>Recipient:</strong></td>
+                <td style="padding:5px; border:2px solid blue;">{{ dst_bal.name }}</td>
+            </tr>
+        </table>
+        <p><i>Thank you for using GREEN FINANCE payment service. You took one step towards a Greener Future. If you have any questions or concerns, please don't hesitate to <a href="webapps2023/contact.html">contact us</a>.</i></p>
+    </div>
+{% endblock %}

@@ -1,0 +1,14 @@
+Command to activate venv: Powershell commands
+
+venv/Scripts/activate
+
+deactivate
+
+Certificates pass word:
+webapps
+host-name: localhost
+
+
+Command to run safe-server:
+
+python manage.py runserver_plus --cert-file localhost.crt --key-file localhost.key

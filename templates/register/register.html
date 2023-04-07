@@ -1,0 +1,23 @@
+{% extends 'userprofile/base.html' %}
+
+{% block title %}
+    Sign-Up
+{% endblock %}
+
+{% block content %}
+    <div class="py-10 text-center space-y-6">
+        <h1>Register for Membership</h1>
+        <style>
+            form {
+                display: inline-block;
+            }
+        </style>
+        <form method="post" class="form-group">
+            {% csrf_token %}
+            {% load crispy_forms_tags %}
+            {{ register_user|crispy }}
+            <button type="submit" class="btn btn-success">Sign-up</button>
+        </form>
+    </div>
+
+{% endblock %}

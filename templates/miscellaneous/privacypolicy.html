@@ -1,0 +1,99 @@
+{% extends 'userprofile/base.html' %}
+
+{% block title %}
+    Privacy Policy
+{% endblock %}
+
+{% block content %}
+    <div class="px-6 py-3 text-lg" style="text-align:justify;">
+        <h2>
+            Privacy Policy for Green Finance Payment Services:
+        </h2>
+        <br>
+        <p>
+            At Green Finance Payment Services, we are committed to protecting the privacy and security of our users' personal information.
+            This Privacy Policy outlines how we collect, use, and safeguard your personal data when you use our services.
+            By using Green Finance Payment Services, you consent to our privacy practices as described in this policy.
+        </p>
+        <h5>
+            We may collect the following types of personal information when you use our services:
+        </h5>
+        <ol>
+            <li>
+                Contact information such as your name, email address, and phone number.
+            </li>
+            <li>
+                Financial information such as your bank account details and credit card information.
+            </li>
+            <li>
+                Transaction details such as the amount and recipient of the payment.
+            </li>
+            <li>
+                Usage information such as your IP address, browser type, and device information.
+            </li>
+        </ol>
+        <h5>
+            How we use your information?
+        </h5>
+        We may use the information we collect for the following purposes:
+        <ol>
+            <style>
+                li {
+                    display: list-item;
+                    list-style-position: inside;
+                    list-style-type: decimal;
+                }
+            </style>
+            <li>
+                To provide our services and complete transactions.
+            </li>
+            <li>
+                To communicate with you about your account and our services.
+            </li>
+            <li>
+                To verify your identity and prevent fraudulent activity.
+            </li>
+            <li>
+                To improve and optimize our services.
+            </li>
+            <li>
+                To comply with legal and regulatory requirements.
+            </li>
+        </ol>
+        <h5>
+            Information sharing:
+        </h5>
+        <p>
+            We do not share your personal information with third parties for marketing purposes.
+            We may share your information with our service providers and partners to provide our services and improve our operations.
+            We may also share your information in response to legal requests or as required by law.
+        </p>
+        <h5>
+            Security:
+        </h5>
+        <p>
+            We take reasonable measures to protect your personal information from unauthorized access, disclosure, or destruction.
+            We use industry-standard encryption to transmit sensitive information and store data in secure servers.
+        </p>
+        <h5>
+            Your rights:
+        </h5>
+        <p>
+            You have the right to access, correct, or delete your personal information.
+            You can also object to our processing of your personal data or withdraw your consent at any time.
+            Please contact us at the address below to exercise your rights or if you have any questions about our privacy practices.
+        </p>
+        <h5>
+            Changes to this policy:
+        </h5>
+        <p>
+            We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new policy on our website.
+        </p>
+        <h5>
+            Contact us:
+        </h5>
+        <p>
+            If you have any questions or concerns about this Privacy Policy, please contact us at <a href="{% url 'privacypolicy' %}">privacy@greenfinance.com</a>.
+        </p>
+    </div>
+{% endblock %}

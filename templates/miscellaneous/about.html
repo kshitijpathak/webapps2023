@@ -1,0 +1,52 @@
+{% extends 'userprofile/base.html' %}
+
+{% block title %}
+    About
+{% endblock %}
+
+{% block content %}
+    <div class="px-6 py-3 text-lg" style="text-align:justify;">
+        <h2>
+            About Green Finance Payment Services:
+        </h2>
+        <br>
+        <div class="grid grid-cols-2 gap-5">
+            <div>
+                <p>
+                    At Green Finance Payment Services, we are committed to providing a simple, secure and sustainable platform
+                    for peer-to-peer transactions. We believe in supporting sustainable businesses and have designed our platform
+                    with a focus on environmental responsibility.
+                </p>
+                <p>
+                    We are proud to partner with businesses that share our values and strive to make a positive impact on the environment.
+                    By using our services, users can support sustainable businesses and contribute to a better future.
+                </p>
+                <p>
+                    In addition to promoting sustainability, we also take concrete action to counter climate change.
+                    We have partnered with reforestation organizations to plant trees on behalf of our users.
+                    This initiative allows us to make a tangible contribution to the fight against climate change and promotes environmental regeneration.
+                </p>
+                <p>
+                    We are dedicated to protecting the privacy and security of our users' information. Our platform is designed
+                    with state-of-the-art security features, and we adhere to strict privacy policies. We value transparency and
+                    strive to maintain open communication with our users.
+                </p>
+                <p>
+                    At Green Finance Payment Services, we believe in making a positive impact on the world while providing a
+                    seamless user experience. Join us in promoting sustainability and environmental responsibility.
+                </p>
+            </div>
+            <div>
+                <style>
+                    img {
+                        min-width: 100%;
+                        min-height: 100%;
+                        width: auto;
+                        height: auto;
+                    }
+                </style>
+                {% load static %}
+                <img src="{% static 'miscellaneous/burningearth.jpg' %}" alt="My image">
+            </div>
+        </div>
+{% endblock %}

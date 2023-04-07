@@ -1,0 +1,55 @@
+{% extends 'userprofile/base.html' %}
+
+{% block title %}
+    Transactions
+{% endblock %}
+
+{% block content %}
+    <div class="grid v-screen place-items-center px-8">
+        <br>
+        <div class="grid h-screen place-items-center bg-blue-100" style="width: 600px; height: 200px; border: thin solid gray; border-radius: 30px">
+            <h2>Your current balance is:</h2>
+            <h1>{{ current_bal.currency }} {{ current_bal.balance }}</h1>
+        </div>
+        <div class="container-fluid py-16">
+            <div class="row">
+                <hr style="height:2px;background-color: darkgrey; border:none;">
+            </div>
+        </div>
+        <h1 style="padding-bottom: 40px">Previous Transactions</h1>
+        <table class="table-fixed">
+            <thead>
+            <tr>
+                <th class="bg-blue-900 text-center text-white p-2 rounded-l-3xl">Date</th>
+                <th class="bg-blue-900 border text-center text-white p-2">To/From</th>
+                <th class="bg-blue-900 border text-center text-white p-2">Type</th>
+                <th class="bg-blue-900 border text-center text-white p-2">Amount</th>
+                <th class="bg-blue-900 border text-center text-white p-2">Balance</th>
+                <th class="bg-blue-900 text-center text-white p-2 rounded-r-3xl">Comments</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% if  transaction_data|length == 0 %}
+                <tr>
+                    <td colspan="6" class="text-center text-gray-400 border px-8 py-2">No transactions found</td>
+                </tr>
+            {% else %}
+                {% for transaction in transaction_data %}
+                    <tr class="odd:bg-gray-100">
+                        <td class="border p-2">{{ transaction.date }}</td>
+                        <td class="border p-2">{{ transaction.to_from }}</td>
+                        <td class="border p-2">{{ transaction.transaction_type }}</td>
+                        <td class="border p-2">{{ transaction.amount }}</td>
+                        <td class="border p-2">{{ transaction.clearing_balance }}</td>
+                        <td class="border p-2">{{ transaction.comment }}</td>
+                    </tr>
+                {% endfor %}
+            {% endif %}
+            </tbody>
+        </table>
+        <br>
+        <br>
+        <i><a href="{% url 'contact' %}" class="text-teal-500 hover:text-teal-300">Contact us</a> if you want to dispute any past payments.</i>
+    </div>
+    </div>
+{% endblock %}

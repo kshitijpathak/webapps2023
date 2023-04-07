@@ -1,0 +1,23 @@
+{% extends 'userprofile/base.html' %}
+
+{% block title %}
+    Request
+{% endblock %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <div class="py-10 text-center space-y-6">
+        <h2>Request Money</h2>
+        <style>
+            form {
+                display: inline-block;
+            }
+        </style>
+        <form method="post" class="form-group" style="width:400px">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <button type="submit" class="btn btn-success">Send Request</button>
+        </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,85 @@
+{% extends 'userprofile/base.html' %}
+
+{% block title %}
+    Notifications
+{% endblock %}
+
+{% block content %}
+    <div class="py-6 text-center space-y-6">
+        <h1 style="padding-bottom: 20px">Notifications</h1>
+        <div class="inline-block grid grid-cols-2 gap-5">
+            <div style="text-align: center; height: 500px; border: thin solid black; border-radius: 30px">
+                <h1 style="padding-bottom: 20px; padding-top: 30px">Archived Notifications</h1>
+                <div class="grid v-screen place-items-center px-8">
+                    <table class="table-fixed">
+                        <thead>
+                        <tr>
+                            <th class="bg-blue-900 text-center text-white p-2 rounded-l-3xl">Requested By</th>
+                            <th class="bg-blue-900 border text-center text-white p-2">Message</th>
+                            <th class="bg-blue-900 text-center text-white p-2 rounded-r-3xl">Amount</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% if  seen_notifications|length == 0 %}
+                            <tr>
+                                <td colspan="6" class="text-center text-gray-400 border px-8 py-2">No transactions found</td>
+                            </tr>
+                        {% else %}
+                            {% for notification in seen_notifications %}
+                                <tr class="odd:bg-gray-100">
+                                    <td class="border p-2">{{ notification.from_user }}</td>
+                                    <td class="border p-2">{{ notification.message }}</td>
+                                    <td class="border p-2">{{ notification.request_amount }}</td>
+                                </tr>
+                            {% endfor %}
+                        {% endif %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+{#        UNREAD NOTIFICATIONS #}
+            <div style="text-align: center; height: 500px; border: thin solid black; border-radius: 30px">
+                <h1 style="padding-bottom: 20px; padding-top: 30px">Unread Notifications</h1>
+                <div class="grid v-screen place-items-center px-8">
+                    <table class="table-fixed">
+                        <thead>
+                        <tr>
+                            <th class="bg-blue-900 text-center text-white p-2 rounded-l-3xl">Requested By</th>
+                            <th class="bg-blue-900 border text-center text-white p-2">Message</th>
+                            <th class="bg-blue-900 border text-center text-white p-2">Amount</th>
+                            <th class="bg-blue-900 text-center text-white p-2 rounded-r-3xl">Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% if  unseen_notifications|length == 0 %}
+                            <tr>
+                                <td colspan="6" class="text-center text-gray-400 border px-8 py-2">No transactions found</td>
+                            </tr>
+                        {% else %}
+                            {% for notification in unseen_notifications %}
+                                <tr class="odd:bg-gray-100">
+                                    <td class="border p-2">{{ notification.from_user }}</td>
+                                    <td class="border p-2">{{ notification.message }}</td>
+                                    <td class="border p-2">{{ notification.request_amount }}</td>
+                                    <td class="border p-2">
+                                        <button style="font-size:24px">
+                                            <a href={% url 'mark_read' pk=notification.id %} class="text-light">
+                                                <i class="fa fa-eye text-white bg-blue-600 p-2 rounded-xl hover:bg-blue-950"></i>
+                                            </a>
+                                        </button>
+                                        <button>
+                                            <a href={% url 'sendMoney' pk=notification.id %} class="text-light">
+                                                <i class="text-white text-xl bg-blue-600 px-1 py-2 rounded-xl hover:bg-blue-950">PAY</i>
+                                            </a>
+                                        </button>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        {% endif %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
